@@ -22,11 +22,11 @@ HTTP can also be used to fetch parts of documents to update Web pages on demand.
 
 ## Components of HTTP-based systems
 
-HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it).
-Most of the time the user-agent is a Web browser, but it can be anything, for example, a robot that crawls the Web to populate and maintain a search engine index.
+HTTP is a client-server protocol: requests are sent by a "client" entity called the user-agent (or a proxy on behalf of it).
+Most of the time the user-agent is a Web browser (an agent acting on behalf of a user), but it can be other things, such as a robot that crawls the Web to populate and maintain a search engine index.
 
-Each individual request is sent to a server, which handles it and provides an answer called the _response_.
-Between the client and the server there are numerous entities, collectively called {{Glossary("Proxy_server", "proxies")}}, which perform different operations and act as gateways or {{Glossary("Cache", "caches")}}, for example.
+Each individual request made by the client, or user agent, is sent to a server, which handles it and provides an answer called the _response_.
+Between the client and the server there can be numerous entities, collectively called {{Glossary("Proxy_server", "proxies")}}, which perform different operations and act as gateways or {{Glossary("Cache", "caches")}}, for example.
 
 ![Client server chain](client-server-chain.png)
 
@@ -37,14 +37,15 @@ Although important for diagnosing network problems, the underlying layers are mo
 
 ### Client: the user-agent
 
-The _user-agent_ is any tool that acts on behalf of the user.
-This role is primarily performed by the Web browser, but it may also be performed by programs used by engineers and Web developers to debug their applications.
+The _user-agent_ is any tool that acts on behalf of a user.
+In most cases, this role is performed by a Web browser used by a user (such as you reading this document on a browser like Safari or Chrome), but it may also be performed by programs used by engineers and Web developers to debug their applications.
 
-The browser is **always** the entity initiating the request.
+A user-agent such as the browser is **always** the entity initiating a request from a server.
 It is never the server (though some mechanisms have been added over the years to simulate server-initiated messages).
 
-To display a Web page, the browser sends an original request to fetch the HTML document that represents the page.
-It then parses this file, making additional requests corresponding to execution scripts, layout information (CSS) to display, and sub-resources contained within the page (usually images and videos).
+To display a Web page, the browser sends an original request to fetch an HTML document that represents, for example, a Web page.
+When the browser gets the Web page back (as a response from the server), it then parses the response. In the case of a website, it grabs the main part of the response, which is an HTML file, and might make additional requests to (other) servers corresponding to execution scripts, layout information (CSS) to display, and sub-resources contained within the page (usually images and videos).
+
 The Web browser then combines these resources to present the complete document, the Web page.
 Scripts executed by the browser can fetch more resources in later phases and the browser updates the Web page accordingly.
 
